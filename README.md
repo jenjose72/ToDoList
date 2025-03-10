@@ -2,7 +2,7 @@
 
 To run the website locally:
 
-1.Clone the project
+1.Clone the project <br>
 2.In terminal Type the following:
 
     cd ToDoFrontend

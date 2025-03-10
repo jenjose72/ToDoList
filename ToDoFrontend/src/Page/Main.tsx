@@ -73,7 +73,7 @@ const TodoApp = () => {
         text: newTaskText.trim(),
         completed: false
       };
-      setTasks(prevTasks => [...prevTasks, newTask]);
+      setTasks((prevTasks: Task[]) => [...prevTasks, newTask]);
       setNewTaskText('');
     }
   };
@@ -85,11 +85,11 @@ const TodoApp = () => {
   };
 
   const deleteTask = (id: number) => {
-    setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
+    setTasks((prevTasks: Task[]) => prevTasks.filter(task => task.id !== id));
   };
 
   const toggleComplete = (id: number) => {
-    setTasks(prevTasks => prevTasks.map(task => 
+    setTasks((prevTasks: Task[]) => prevTasks.map(task => 
       task.id === id ? { ...task, completed: !task.completed } : task
     ));
   };
@@ -101,7 +101,7 @@ const TodoApp = () => {
 
   const saveEdit = () => {
     if (editingText.trim() !== '' && editingTaskId !== null) {
-      setTasks(prevTasks => prevTasks.map(task => 
+      setTasks((prevTasks: Task[]) => prevTasks.map(task => 
         task.id === editingTaskId ? { ...task, text: editingText } : task
       ));
     }
@@ -248,7 +248,7 @@ const TodoApp = () => {
             opacity: tasks.length > 0 ? 1 : 0
           }}
         >
-          {tasks.map((task, index) => (
+          {tasks.map((task: Task, index: number) => (
             <li
               key={task.id}
               draggable={editingTaskId !== task.id}
@@ -340,7 +340,7 @@ const TodoApp = () => {
           )}
         </ul>
       </div>
-      <style jsx global>{`
+      <style>{`
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
